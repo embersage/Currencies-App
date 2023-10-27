@@ -86,6 +86,23 @@ legend {
   display: block;
 }
 
+@keyframes focus {
+  0% {
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #b8b8b8;
+  }
+  50% {
+    background-color: #b8b8b8;
+    color: #fff;
+    border: 1px solid transparent;
+  }
+  100% {
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #b8b8b8;
+  }
+}
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -127,7 +144,7 @@ legend {
   color: #000;
 }
 .main__input:focus {
-  animation: focus 9s infinite;
+  animation: focus 9s ease-in 0s infinite;
 }
 .main__input::-webkit-outer-spin-button, .main__input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -135,23 +152,6 @@ legend {
   margin: 0;
 }
 
-@keyframes focus {
-  0% {
-    background-color: #fff;
-    color: #000;
-    border: 1px solid #b8b8b8;
-  }
-  50% {
-    background-color: #b8b8b8;
-    color: #fff;
-    border: 1px solid transparent;
-  }
-  100% {
-    background-color: #fff;
-    color: #000;
-    border: 1px solid #b8b8b8;
-  }
-}
 .main__list {
   margin: 0 auto;
   padding-top: 20px;
@@ -173,6 +173,18 @@ legend {
   transform: scale(1.05);
 }
 
+._active {
+  animation: swipe 0.5s ease-in 0s 1;
+}
+
+@keyframes swipe {
+  0% {
+    transform: translate(-25%, 0);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
 @media (max-width: 620px) {
   .main {
     padding: 10px 0;
@@ -188,5 +200,10 @@ legend {
   }
   .main__list-item {
     font-size: 18px;
+  }
+}
+@media (max-width: 350px) {
+  .main__input {
+    max-width: 250px;
   }
 }/*# sourceMappingURL=main.css.map */

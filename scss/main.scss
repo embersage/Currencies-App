@@ -1,5 +1,25 @@
 @import 'reset', 'variables', 'fonts';
 
+@keyframes focus {
+    0% {
+        background-color: #fff;
+        color: #000;
+        border: 1px solid #b8b8b8;
+    }
+
+    50% {
+        background-color: #b8b8b8;
+        color: #fff;
+        border: 1px solid transparent;
+    }
+
+    100% {
+        background-color: #fff;
+        color: #000;
+        border: 1px solid #b8b8b8;
+    }
+}
+
 .wrapper {
     display: flex;
     flex-direction: column;
@@ -41,33 +61,13 @@
     color: #000;
 
     &:focus {
-        animation: focus 9s infinite;
+        animation: focus 9s ease-in 0s infinite;
     }
 
     &::-webkit-outer-spin-button,
     &::-webkit-inner-spin-button {
         appearance: none;
         margin: 0;
-    }
-}
-
-@keyframes focus {
-    0% {
-        background-color: #fff;
-        color: #000;
-        border: 1px solid #b8b8b8;
-    }
-
-    50% {
-        background-color: #b8b8b8;
-        color: #fff;
-        border: 1px solid transparent;
-    }
-
-    100% {
-        background-color: #fff;
-        color: #000;
-        border: 1px solid #b8b8b8;
     }
 }
 
@@ -86,6 +86,7 @@
     font-family: 'Manrope', sans-serif;
     font-size: 24px;
     font-weight: 400;
+
     transition: all .3s ease-in;
 
     &:hover {
@@ -93,8 +94,21 @@
     }
 }
 
-@media(max-width: 620px) {
+._active {
+    animation: swipe .5s ease-in 0s 1;
+}
 
+@keyframes swipe {
+    0% {
+        transform: translate(-25%, 0);
+    }
+
+    100% {
+        transform: translate(0);
+    }
+}
+
+@media(max-width: 620px) {
     .main {
         padding: 10px 0;
     }
@@ -112,5 +126,11 @@
 
     .main__list-item {
         font-size: 18px;
+    }
+}
+
+@media(max-width: 350px) {
+    .main__input {
+        max-width: 250px;
     }
 }

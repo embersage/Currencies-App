@@ -25,11 +25,27 @@ async function addCurrencies(number = 0) {
             list.appendChild(newItem);
         }
     } else {
+        let i = 0;
         for (item of result) {
             const newItem = document.createElement('li');
             newItem.classList.add('main__list-item');
             newItem.innerHTML = `<p>1 ${item.name} стоит ${item.price} руб.</p>`
-            list.appendChild(newItem);
+            const obj = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    newItem.classList.add('_active');
+                    resolve(newItem);
+                }, i * 100);
+            });
+            obj
+                .then((response) => {
+                    list.appendChild(response);
+                })
+            i++;
+            //const newItem = document.createElement('li');
+            //newItem.classList.add('main__list-item');
+            //newItem.innerHTML = `<p>1 ${item.name} стоит ${item.price} руб.</p>`
+            //newItem.classList.add('_active');
+            //list.appendChild(newItem);
         }
     }
 }
